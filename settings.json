@@ -1,0 +1,10 @@
+{
+  "mcp": {
+    "servers": {
+      "EventManagerSse": {
+        "url": "http://localhost:5047/"
+      }
+    }
+  },
+  "chat.mcp.discovery.enabled": true
+}
