@@ -18,8 +18,6 @@ namespace AICalendar.Services
             {
                 Endpoint = new Uri(Environment.GetEnvironmentVariable("AIUrl"))
             }).GetChatClient(Environment.GetEnvironmentVariable("AIModel")).AsIChatClient())
-                .UseLogging()
-                .UseOpenTelemetry()
                 .UseFunctionInvocation();
 
             var client = chatClientBuilder.Build();

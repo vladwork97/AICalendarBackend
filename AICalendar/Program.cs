@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddLogging();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -43,6 +43,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapMcp();
-app.MapGet("/", () => "AI Calendar backend is running.");
 
 app.Run();
