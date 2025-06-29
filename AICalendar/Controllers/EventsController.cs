@@ -123,10 +123,10 @@ namespace AICalendar.Controllers
         }
 
         [HttpPost("prompt")]
-        public IActionResult HandlePrompt([FromBody] PromptRequest request)
+        public IActionResult HandlePrompt(PromptProcessor promptProcessor, [FromBody] PromptRequest request)
         {
             var prompt = request.Prompt ?? string.Empty;
-            var response = PromptProcessor.Process(prompt);
+            var response = promptProcessor.Process(prompt);
             return Ok(response);
         }
 
