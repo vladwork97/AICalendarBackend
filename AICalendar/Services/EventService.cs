@@ -19,6 +19,12 @@ public static class EventService
         return true;
     }
 
+    public static bool DeleteAll()
+    {
+        _events.Clear();
+        return true;
+    }
+
     public static void CreateEvent(EventDto newEvent)
     {
         _events.Add(newEvent);

@@ -21,6 +21,13 @@ public static class Scheduler
         return $"Scheduled meeting with title {title} from {from} to {to}";
     }
 
+    [McpServerTool, Description("Get list of events")]
+    public static List<EventDto> GetEvents()
+    {
+        var events = EventService.GetAll();
+        return events.ToList();
+    }
+
     [McpServerTool, Description("Get list of events on specific time range.")]
     public static List<EventDto> GetEvents(DateTime from, DateTime to)
     {
@@ -32,6 +39,12 @@ public static class Scheduler
     public static bool CancelEvent(Guid id)
     {
         return EventService.DeleteById(id);
+    }
+
+    [McpServerTool, Description("Cancel all events")]
+    public static bool CancelEvent()
+    {
+        return EventService.DeleteAll();
     }
 
     [McpServerTool, Description("Cancel event by title")]
