@@ -124,7 +124,7 @@ namespace AICalendar.Controllers
         }
 
         [HttpPost("prompt")]
-        public Task<IAsyncEnumerable<ChatResponseUpdate>> HandlePrompt([FromBody] PromptRequest request)
+        public Task<string> HandlePrompt([FromBody] PromptRequest request)
         {
             var prompt = request.Prompt ?? string.Empty;
             return PromptProcessor.Process(prompt);

@@ -11,7 +11,7 @@ namespace AICalendar.Services
 {
     public static class PromptProcessor
     {
-        public static async Task<IAsyncEnumerable<ChatResponseUpdate>> Process(string prompt)
+        public static async Task<string> Process(string prompt)
         {
 
             var chatClientBuilder = new ChatClientBuilder(new OpenAIClient(new ApiKeyCredential(Environment.GetEnvironmentVariable("AIKey")), new OpenAIClientOptions()
@@ -31,7 +31,14 @@ namespace AICalendar.Services
             var tools = await mcpClient.ListToolsAsync();
             List<ChatMessage> messages = [new(ChatRole.User, prompt)];
 
-            return client.GetStreamingResponseAsync(messages, new() { Tools = [.. tools] });
+            var result = client.GetStreamingResponseAsync(messages, new() { Tools = [.. tools] });
+            string response = string.Empty;
+            await foreach (var update in result)
+            {
+                response += update;
+            }
+
+            return response;
         }
     }
 }
