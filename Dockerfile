@@ -1,5 +1,5 @@
 # STAGE 1: Build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
 # Copy csproj and restore
@@ -14,7 +14,7 @@ WORKDIR /app/AICalendar
 RUN dotnet publish -c Release -o out
 
 # STAGE 2: Run
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/AICalendar/out ./
 ENTRYPOINT ["dotnet", "AICalendar.dll"]

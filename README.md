@@ -22,13 +22,11 @@
 
 ## 🔗 Links
 
-- 🖥️ Backend API: [Render](https://aicalendar-gqcp.onrender.com)
+- 🖥️ Backend API: [Render](https://aicalendarbackend.onrender.com)
 
-- 📘 Swagger UI: [Swagger](https://aicalendar-gqcp.onrender.com/swagger)
+- 📘 Swagger UI: [Swagger](https://aicalendarbackend.onrender.com/swagger)
 
-- 💻 Frontend GitHub: [ai-calendar-ui](https://github.com/OlesiaKubska/ai-calendar-ui)
-
-- 🌐 Frontend Live [GitHub Pages deployment](https://olesiakubska.github.io/ai-calendar-ui/)
+- 🌐 Frontend Live [GitHub Pages deployment](https://vladwork97.github.io/AI-Calendar/)
 
 ## 📌 Main Endpoints
 
@@ -88,11 +86,6 @@ POST /api/v1/events/find-slot
 #### Backend
 
 ```
-# 1. Clone the repo
-git clone https://github.com/OlesiaKubska/ai-calendar.git
-cd ai-calendar
-
-# 2. Start the backend
 cd AICalendar
 dotnet run
 ```
@@ -106,12 +99,7 @@ docker run -p 8080:8080 aicalendar
 
 #### Frontend (ai-calendar-ui)
 
-```
-git clone https://github.com/OlesiaKubska/ai-calendar-ui.git
-cd ai-calendar-ui
-npm install
-npm run dev
-```
+https://github.com/vladwork97/AI-Calendar
 
 ### ✅ Completed Tasks
 
@@ -122,10 +110,3 @@ npm run dev
 - Unit testing
 - Docker support
 - Deployed backend (Render) & frontend (GitHub Pages)
-
-# 👩‍💻 Author
-
-Olesia Kubska
-
-- 🔗 GitHub: github.com/OlesiaKubska
-- 📧 Email: kublesia0908@gmail.com
