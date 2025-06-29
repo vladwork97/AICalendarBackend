@@ -28,30 +28,6 @@ builder.Services
     .WithHttpTransport()
     .WithToolsFromAssembly();
 
-builder.Services.AddScoped<PromptProcessor>();
-
-builder.Services.AddChatClient(sp =>
-{
-    var chatClientBuilder = new ChatClientBuilder(new OpenAIClient(new ApiKeyCredential(Environment.GetEnvironmentVariable("AIKey")), new OpenAIClientOptions()
-        {
-            Endpoint = new Uri(Environment.GetEnvironmentVariable("AIUrl"))
-    }).GetChatClient(Environment.GetEnvironmentVariable("AIModel")).AsIChatClient())
-        .UseLogging()
-        .UseOpenTelemetry()
-        .UseFunctionInvocation();
-
-    return chatClientBuilder.Build(sp);
-});
-
-var mcpClient = await McpClientFactory.CreateAsync(new SseClientTransport(
-    new SseClientTransportOptions()
-    {
-        Endpoint = new Uri("https://aicalendarbackend.onrender.com/"),
-        Name = "AICalendar.ApiService"
-    }));
-var tools = await mcpClient.ListToolsAsync();
-builder.Services.AddSingleton<ChatOptions>(_ => new() { Tools = [.. tools] });
-
 var app = builder.Build();
 
 // Apply CORS policy
