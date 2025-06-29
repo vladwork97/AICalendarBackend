@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
+using AICalendar.DTOs;
 using AICalendar.Models;
 using AICalendar.Services;
-using System.Text.RegularExpressions;
-using AICalendar.DTOs;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.AI;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 
 namespace AICalendar.Controllers
@@ -123,12 +124,10 @@ namespace AICalendar.Controllers
         }
 
         [HttpPost("prompt")]
-        public IActionResult HandlePrompt([FromBody] PromptRequest request)
+        public Task<IAsyncEnumerable<ChatResponseUpdate>> HandlePrompt([FromBody] PromptRequest request)
         {
             var prompt = request.Prompt ?? string.Empty;
-            var response = PromptProcessor.Process(prompt);
-            return Ok(response);
+            return PromptProcessor.Process(prompt);
         }
-
     }
 }
